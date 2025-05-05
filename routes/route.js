@@ -1,17 +1,10 @@
-const express = require ('express');
-const router = express.Router()
-
-router.post('/login', ()=>{
-    console.log("Rota de Login")
-})
-
-router.post('/cadastro', ()=>{
-    console.log("Rota de cadastro")
-})
-
-router.put('/atualizar', ()=>{
-    console.log("Usuario atualizado")
-})
+const express = require("express");
+const router = express.Router();
+const usuariosController = require("../controllers/usuarios.controller");
 
 
-module.exports = router
+router.post("/cadastrar", usuariosController.cadastraUsuario);
+router.put("/:id", usuariosController.atualizarUsuario);
+
+
+module.exports = router;
