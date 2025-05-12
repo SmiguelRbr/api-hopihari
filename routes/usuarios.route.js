@@ -4,9 +4,9 @@ const usuariosController = require("../controllers/usuarios.controller");
 
 
 router.put("/atualizar/:id", usuariosController.atualizarUsuario);
-router.post("/cadastrar", usuariosController.cadastraUsuario);
+router.post("/cadastrar", usuariosController.cadastrarUsuario);
 router.delete("/deletar/:id", usuariosController.deletarUsuario);
-router.get("/login", usuariosController.loginUsuario);
+router.post("/login", usuariosController.loginUsuario);
 
 
 module.exports = router;
