@@ -75,3 +75,25 @@ INSERT INTO `hopi_hari_db`.`lines` (`users_id`, `atracoes_id`) VALUES
 (8, 6), -- Maria entrou na fila da Casa do Terror
 (8, 10), -- João entrou na fila da Montanha Russa
 (7, 10);
+
+
+
+
+
+
+
+
+
+
+
+SELECT 
+ CONCAT(u.first_name, ' ', u.last_name) AS nome_usuario,
+    l.users_id AS id_usuario,
+      a.nome AS nome_brinquedo,
+    l.atracoes_id AS id_brinquedo
+FROM 
+    hopi_hari_db.lines l
+JOIN 
+    hopi_hari_db.atracoes a ON l.atracoes_id = a.id
+JOIN 
+    hopi_hari_db.users u ON l.users_id = u.id

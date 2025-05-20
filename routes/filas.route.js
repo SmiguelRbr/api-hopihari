@@ -6,7 +6,7 @@ const filaController = require('../controllers/filas.controller');
 // Adicionar um controller adequado ao invés de apenas console.log
 const filasController = require('../controllers/filas.controller');
 
-router.post('/:idRide', login.required, filasController.entrarFila, filaController.verificarBrinquedo);
+router.post('/:idRide', login.required, filasController.verificarBrinquedo, filasController.entrarFila);
 
 
 module.exports = router;

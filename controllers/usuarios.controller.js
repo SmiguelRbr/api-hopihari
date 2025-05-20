@@ -35,43 +35,32 @@ exports.atualizarUsuario = async (req, res) => {
 
 exports.cadastrarUsuario = async (req, res) => {
     try {
-        const { first_name, last_name, email, password, birth_date, phone } = req.body;
+        const { first_name, last_name, email, password, birth_date, phone, admin } = req.body;
 
-        // Validate required fields
         if (!first_name || !last_name || !email || !password || !birth_date) {
             return res.status(400).send({ 
                 mensagem: "Campos obrigatórios: first_name, last_name, email, password, birth_date" 
             });
         }
 
-        // Hash the password
         const salt = await bcrypt.genSalt(10);
         const senhaHash = await bcrypt.hash(password, salt);
 
-        // Insert user into database
         const resultado = await mysql.execute(
-            `INSERT INTO users (first_name, last_name, email, password, birth_date, phone) 
-             VALUES (?, ?, ?, ?, ?, ?)`,
-            [first_name, last_name, email, senhaHash, birth_date, phone]
+            `INSERT INTO users (first_name, last_name, email, password, birth_date, phone, admin) 
+             VALUES (?, ?, ?, ?, ?, ?, ?)`,
+            [first_name, last_name, email, senhaHash, birth_date, phone, admin || 0] // Define admin como 0 se não for fornecido
         );
-
-        // Generate JWT token
-        const token = jwt.sign({ 
-            id: resultado.insertId,
-            first_name,
-            last_name,
-            email,
-            birth_date
-        }, JWT_SECRET, { expiresIn: '1h' });
 
         return res.status(201).send({
             mensagem: "Usuário criado com sucesso",
-            token: token
+            resultado: resultado
         });
     } catch (error) {
         return res.status(500).send({ mensagem: error.message });
     }
 };
+
 exports.deletarUsuario = async (req, res) => {
     try {
         const idUsuario = Number(req.params.id); // Fix: Correctly extract id from params
@@ -116,6 +105,7 @@ exports.loginUsuario = async (req, res) => {
             last_name: usuario.last_name,
             email: usuario.email,
             birth_date: usuario.birth_date,
+            admin: usuario.admin
         }, JWT_SECRET);
 
         return res.status(200).send({
@@ -126,3 +116,14 @@ exports.loginUsuario = async (req, res) => {
         return res.status(500).send({ mensagem: error.message });
     }
 };
+
+exports.userRequired = async (req, res, next) => {
+    try {
+        if (!res.locals.admin) {
+            return res.status(405).send({ mensagem: "Usuario não autorizado" });
+        }
+        next();
+    } catch(error) {
+        return res.status(500).send(error)
+    }
+}
