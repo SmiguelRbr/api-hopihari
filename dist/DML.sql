@@ -97,3 +97,66 @@ JOIN
     hopi_hari_db.atracoes a ON l.atracoes_id = a.id
 JOIN 
     hopi_hari_db.users u ON l.users_id = u.id
+
+
+INSERT INTO area (nome) VALUES 
+('Aribabiba'),
+('Mistieri'),
+('Infantasia'),
+('Wild West'),
+('Kaminda Mundi');
+
+
+-- Aribabiba
+INSERT INTO atracoes (nome, tempo_espera, status, area, area_id) VALUES 
+('Speedi ‘64', 10, 'aberto', 'Aribabiba', (SELECT id FROM area WHERE nome = 'Aribabiba')),
+('Vambatê', 8, 'aberto', 'Aribabiba', (SELECT id FROM area WHERE nome = 'Aribabiba')),
+('Cinemotion', 5, 'aberto', 'Aribabiba', (SELECT id FROM area WHERE nome = 'Aribabiba')),
+('Katapul', 12, 'aberto', 'Aribabiba', (SELECT id FROM area WHERE nome = 'Aribabiba')),
+('Jambalaia', 7, 'aberto', 'Aribabiba', (SELECT id FROM area WHERE nome = 'Aribabiba')),
+('Aribabobbi', 6, 'aberto', 'Aribabiba', (SELECT id FROM area WHERE nome = 'Aribabiba')),
+('Parangolé', 9, 'aberto', 'Aribabiba', (SELECT id FROM area WHERE nome = 'Aribabiba')),
+('Hadikali', 11, 'aberto', 'Aribabiba', (SELECT id FROM area WHERE nome = 'Aribabiba'));
+
+-- Mistieri
+INSERT INTO atracoes (nome, tempo_espera, status, area, area_id) VALUES 
+('Katakumb', 10, 'aberto', 'Mistieri', (SELECT id FROM area WHERE nome = 'Mistieri')),
+('Ekatomb', 15, 'aberto', 'Mistieri', (SELECT id FROM area WHERE nome = 'Mistieri')),
+('Montezum', 20, 'aberto', 'Mistieri', (SELECT id FROM area WHERE nome = 'Mistieri')),
+('Simulákron', 5, 'aberto', 'Mistieri', (SELECT id FROM area WHERE nome = 'Mistieri')),
+('Vulaviking', 8, 'aberto', 'Mistieri', (SELECT id FROM area WHERE nome = 'Mistieri')),
+('Vurang', 12, 'aberto', 'Mistieri', (SELECT id FROM area WHERE nome = 'Mistieri'));
+
+-- Infantasia
+INSERT INTO atracoes (nome, tempo_espera, status, area, area_id) VALUES 
+('Kastel di Lendas', 7, 'aberto', 'Infantasia', (SELECT id FROM area WHERE nome = 'Infantasia')),
+('Giranda Pokotó', 6, 'aberto', 'Infantasia', (SELECT id FROM area WHERE nome = 'Infantasia')),
+('Toka do Uga', 5, 'aberto', 'Infantasia', (SELECT id FROM area WHERE nome = 'Infantasia')),
+('Bugabalum', 4, 'aberto', 'Infantasia', (SELECT id FROM area WHERE nome = 'Infantasia')),
+('Giralata', 5, 'aberto', 'Infantasia', (SELECT id FROM area WHERE nome = 'Infantasia')),
+('Dispenkito', 6, 'aberto', 'Infantasia', (SELECT id FROM area WHERE nome = 'Infantasia')),
+('Komboio', 5, 'aberto', 'Infantasia', (SELECT id FROM area WHERE nome = 'Infantasia')),
+('Astronavi', 7, 'aberto', 'Infantasia', (SELECT id FROM area WHERE nome = 'Infantasia')),
+('Klapi Klapi', 4, 'aberto', 'Infantasia', (SELECT id FROM area WHERE nome = 'Infantasia'));
+
+-- Wild West
+INSERT INTO atracoes (nome, tempo_espera, status, area, area_id) VALUES 
+('NamusKita', 9, 'aberto', 'Wild West', (SELECT id FROM area WHERE nome = 'Wild West')),
+('La Mina Del Joe Sacramento', 10, 'aberto', 'Wild West', (SELECT id FROM area WHERE nome = 'Wild West')),
+('Evolution', 15, 'aberto', 'Wild West', (SELECT id FROM area WHERE nome = 'Wild West')),
+('Bravo Bull', 8, 'aberto', 'Wild West', (SELECT id FROM area WHERE nome = 'Wild West')),
+('Ghosti Hotel', 12, 'aberto', 'Wild West', (SELECT id FROM area WHERE nome = 'Wild West')),
+('Rio Bravo', 14, 'aberto', 'Wild West', (SELECT id FROM area WHERE nome = 'Wild West')),
+('Vamvolari', 10, 'aberto', 'Wild West', (SELECT id FROM area WHERE nome = 'Wild West')),
+('Spleshi', 13, 'aberto', 'Wild West', (SELECT id FROM area WHERE nome = 'Wild West')),
+('Tirolesa', 11, 'aberto', 'Wild West', (SELECT id FROM area WHERE nome = 'Wild West'));
+
+-- Kaminda Mundi
+INSERT INTO atracoes (nome, tempo_espera, status, area, area_id) VALUES 
+('Theatro di Kaminda', 5, 'aberto', 'Kaminda Mundi', (SELECT id FROM area WHERE nome = 'Kaminda Mundi')),
+('Giranda Mundi', 7, 'aberto', 'Kaminda Mundi', (SELECT id FROM area WHERE nome = 'Kaminda Mundi')),
+('Jogakí di Kaminda', 6, 'aberto', 'Kaminda Mundi', (SELECT id FROM area WHERE nome = 'Kaminda Mundi')),
+('Le Voyage', 8, 'aberto', 'Kaminda Mundi', (SELECT id FROM area WHERE nome = 'Kaminda Mundi'));
+
+
+
