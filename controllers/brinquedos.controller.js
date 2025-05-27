@@ -20,6 +20,7 @@ exports.cadastrarBrinquedo = async (req, res) => {
     }
 }
 
+
 exports.getBrinquedosPorArea = async (req, res) => {
     try {
         console.log("Parâmetro recebido:", req.params.areaName); // Log do parâmetro recebido
