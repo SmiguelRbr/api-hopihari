@@ -11,4 +11,8 @@ router.post('/',
     brinquedosController.cadastrarBrinquedo
 );
 
+router.get('/area/:areaName', 
+    login.required, 
+    brinquedosController.getBrinquedosPorArea
+);
 module.exports = router;
