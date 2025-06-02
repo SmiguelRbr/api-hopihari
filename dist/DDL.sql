@@ -81,6 +81,8 @@ AUTO_INCREMENT = 10
 DEFAULT CHARACTER SET = utf8mb4
 COLLATE = utf8mb4_unicode_ci;
 
+ALTER TABLE `hopi_hari_db`.`users`
+ADD COLUMN `profile_image` VARCHAR(255) NULL DEFAULT NULL AFTER `phone`;
 
 -- -----------------------------------------------------
 -- Table `hopi_hari_db`.`lines`
