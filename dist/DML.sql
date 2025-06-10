@@ -1,99 +1,160 @@
-INSERT INTO areas (name) VALUES 
-("Kaminda"),
-("Wild West"),
-("Infantasia"),
-("Aribabiba"),
-("Mistieri");
+SELECT users.first_name as name, 
+	users.id,
+	rides.name,
+    rides.id
+	from `lines`
+    
+INNER JOIN users 
+ON users.id = `lines`.id_user
+INNER JOIN 	rides 
+on rides.id = `lines`.id_ride
 
-
--- INSERT INTO para tabela rides do Hopi Hari
--- Assumindo que os id_areas correspondem a:
--- 1 = Kaminda Mundi, 2 = Infantasia, 3 = Mistieri, 4 = Wild West, 5 = Aribabiba
-
--- ÁREA KAMINDA MUNDI (id_areas = 1)
-INSERT INTO rides (name, waiting_time, status, id_areas, image) VALUES 
-('Giranda Mundi', 15, 'Funcionando', 1, 'giranda_mundi.jpg'),
-('Tirolesa', 10, 'Funcionando', 1, 'tirolesa.jpg');
-
--- ÁREA INFANTASIA (id_areas = 2) 
-INSERT INTO rides (name, waiting_time, status, id_areas, image) VALUES 
-('Giranda Pokotó', 5, 'Funcionando', 3, 'giranda_pokoto.jpg'),
-('Giralata', 8, 'Funcionando', 3, 'giralata.jpg'),
-('Astronavi', 10, 'Funcionando', 3, 'astronavi.jpg'),
-('Kastel di Lendas', 12, 'Funcionando', 3, 'kastel_lendas.jpg'),
-('Toka do Uga', 7, 'Funcionando', 3, 'toka_uga.jpg'),
-('Vambatê', 6, 'Funcionando', 3, 'vambate.jpg'),
-('Klapi Klapi Show', 0, 'Funcionando', 3, 'klapi_show.jpg');
-
--- ÁREA MISTIERI (id_areas = 3)
-INSERT INTO rides (name, waiting_time, status, id_areas, image) VALUES 
-('Ghosti Hotel', 20, 'Funcionando', 5, 'ghosti_hotel.jpg');
-
--- ÁREA WILD WEST (id_areas = 4)
-INSERT INTO rides (name, waiting_time, status, id_areas, image) VALUES 
-('La Mina del Joe Sacramento', 25, 'Funcionando', 2, 'la_mina.jpg'),
-('Bravo Bull', 15, 'Funcionando', 2, 'bravo_bull.jpg'),
-('Rio Bravo', 30, 'Funcionando', 2, 'rio_bravo.jpg'),
-('Saloon', 0, 'Funcionando', 2, 'saloon.jpg');
-
--- ÁREA ARIBABIBA (id_areas = 5)
-INSERT INTO rides (name, waiting_time, status, id_areas, image) VALUES 
-('Namuskita', 35, 'Funcionando', 4, 'namuskita.jpg'),
-('Evolution', 25, 'Funcionando', 4, 'evolution.jpg'),
-('Vamvolari', 20, 'Funcionando', 4, 'vamvolari.jpg'),
-('Spleshi', 18, 'Funcionando', 4, 'spleshi.jpg');
-
--- OBSERVAÇÕES:
--- 1. Os tempos de espera são estimativas baseadas na popularidade das atrações
--- 2. Status definido como 'Funcionando' - ajuste conforme necessário
--- 3. Nomes de imagens são sugestões - ajuste conforme seus arquivos
--- 4. Ajuste os id_areas conforme sua tabela de áreas
--- 5. Shows têm waiting_time = 0 pois são apresentações com horários fixos
-
--- PRINCIPAIS ATRAÇÕES POR CATEGORIA:
--- Montanhas-russas: Namuskita, La Mina del Joe Sacramento
--- Atrações aquáticas: Rio Bravo, Spleshi  
--- Atrações familiares: Giranda Mundi, Vamvolari
--- Atrações infantis: Giranda Pokotó, Astronavi, Giralata
--- Shows: Klapi Klapi Show, Saloon
--- Aventura: Tirolesa, Toka do Uga
+insert into areas (name) VALUES ("Aribabiba");
+insert into areas (name) VALUES ("Mistieri");
+insert into areas (name) VALUES ("Kaminda Mundi");
+insert into areas (name) VALUES ("Wild West");
+insert into areas (name) VALUES ("Infantasia");
 
 
 
+select * from areas;
+select * from rides;
+
+insert into rides (name, waiting_time, status, areas_id);
+VALUES
+  ("Aribabobbi", 3, "Aberto", (SELECT id FROM areas WHERE name = "Aribabiba")),
+  ("Cinemotion", 4, "Aberto", (SELECT id FROM areas WHERE name = "Aribabiba")),
+  ("Hadikali", 7, "Aberto", (SELECT id FROM areas WHERE name = "Aribabiba")),
+  ("Jambalaia", 5, "Aberto", (SELECT id FROM areas WHERE name = "Aribabiba")),
+  ("Katapul", 5, "Aberto", (SELECT id FROM areas WHERE name = "Aribabiba")),
+  ("Parangolé", 4, "Aberto", (SELECT id FROM areas WHERE name = "Aribabiba")),
+  ("Speedi '64", 4, "Aberto", (SELECT id FROM areas WHERE name = "Aribabiba")),
+  ("Vambatê", 6, "Aberto", (SELECT id FROM areas WHERE name = "Aribabiba")),
+  ("La Tour Eiffel", 12, "Aberto", (SELECT id FROM areas WHERE name = "Aribabiba")),
+
+  ("Montezum", 5, "Aberto", (SELECT id FROM areas WHERE name = "Mistieri")),
+  ("Vurang", 5, "Aberto", (SELECT id FROM areas WHERE name = "Mistieri")),
+  ("Katakumb", 4, "Aberto", (SELECT id FROM areas WHERE name = "Mistieri")),
+  ("La Mina Del Joe Sacramento", 4, "Aberto", (SELECT id FROM areas WHERE name = "Mistieri")),
+  ("Rio Bravo", 6, "Aberto", (SELECT id FROM areas WHERE name = "Mistieri")),
+  ("Ekatomb", 6, "Aberto", (SELECT id FROM areas WHERE name = "Mistieri")),
+
+  ("Giranda Mundi", 3, "Aberto", (SELECT id FROM areas WHERE name = "Kaminda Mundi")),
+  ("Jogakí di Kaminda", 2, "Aberto", (SELECT id FROM areas WHERE name = "Kaminda Mundi")),
+  ("Theatro di Kaminda", 2, "Aberto", (SELECT id FROM areas WHERE name = "Kaminda Mundi")),
+  (" Cine 180 ", 2, "Aberto", (SELECT id FROM areas WHERE name = "Kaminda Mundi")),
+  
+
+  ("Ghosti Hotel", 4, "Aberto", (SELECT id FROM areas WHERE name = "Wild West")),
+  ("Vulaviking", 5, "Aberto", (SELECT id FROM areas WHERE name = "Wild West")),
+  ("Bravo Bull", 3, "Aberto", (SELECT id FROM areas WHERE name = "Wild West")),
+  ("Saloon Show", 0, "Aberto", (SELECT id FROM areas WHERE name = "Wild West")),
+ 
+
+  ("Giranda Pokotó", 2, "Aberto", (SELECT id FROM areas WHERE name = "Infantasia")),
+  ("Astronavi", 2, "Aberto", (SELECT id FROM areas WHERE name = "Infantasia")),
+  ("Dispenkito", 2, "Aberto", (SELECT id FROM areas WHERE name = "Infantasia"));
+  
+  
+
+desc rides;
+SET SQL_SAFE_UPDATES = 0;
+
+select * from rides where name =  "Aribabobbi";
+update rides set image = "Aribabobbi2.jpg" where name = "Aribabobbi";
+
+
+select name from rides;
+update rides set image = "cine.png" where name = "Cinemotion";
+
+
+select name from rides;
+update rides set image = "hadikali.png" where name = "Hadikali";
+
+
+select name from rides;
+update rides set image = "Katapul.png" where name = "Katapul";
+
+select name from rides;
+update rides set image = "jambalaia.png" where name = "Jambalaia";
+
+
+select name from rides;
+update rides set image = "Parangolé.png" where name = "Parangolé";
+
+
+select name from rides;
+update rides set image = "speedi.png" where name = "Speedi '64";
+
+
+select name from rides;
+update rides set image = "Vambatê.png" where name = "Vambatê";
+
+
+select name from rides;
+update rides set image = "latour.png" where name = "La Tour Eiffel";
+
+
+select name from rides;
+update rides set image = "Montezum.jng" where name = "Montezum";
 
 
 
--- UPDATE para definir imagens das atrações do Hopi Hari
+select name from rides;
+update rides set image = "vugaga.png" where name = "Vurang";
 
--- ÁREA KAMINDA MUNDI
-UPDATE rides SET image = 'giranda_mundi.jpg' WHERE name = 'Giranda Mundi';
-UPDATE rides SET image = 'tirolesa.jpg' WHERE name = 'Tirolesa';
 
--- ÁREA INFANTASIA
-UPDATE rides SET image = 'giranda_pokoto.jpg' WHERE name = 'Giranda Pokotó';
-UPDATE rides SET image = 'giralata.jpg' WHERE name = 'Giralata';
-UPDATE rides SET image = 'astronavi.jpg' WHERE name = 'Astronavi';
-UPDATE rides SET image = 'kastel_lendas.jpg' WHERE name = 'Kastel di Lendas';
-UPDATE rides SET image = 'toka_uga.jpg' WHERE name = 'Toka do Uga';
-UPDATE rides SET image = 'vambate.jpg' WHERE name = 'Vambatê';
-UPDATE rides SET image = 'klapi_show.jpg' WHERE name = 'Klapi Klapi Show';
+select name from rides;
+update rides set image = "Katakumb.png" where name = "Katakumb";
 
--- ÁREA MISTIERI
-UPDATE rides SET image = 'ghosti_hotel.jpg' WHERE name = 'Ghosti Hotel';
 
--- ÁREA WILD WEST
-UPDATE rides SET image = 'la_mina.jpg' WHERE name = 'La Mina del Joe Sacramento';
-UPDATE rides SET image = 'bravo_bull.jpg' WHERE name = 'Bravo Bull';
-UPDATE rides SET image = 'rio_bravo.jpg' WHERE name = 'Rio Bravo';
-UPDATE rides SET image = 'saloon.jpg' WHERE name = 'Saloon';
+select name from rides;
+update rides set image = "LaMina.png" where name = "La Mina Del Joe Sacramento";
 
--- ÁREA ARIBABIBA
-UPDATE rides SET image = 'namuskita.jpg' WHERE name = 'Namuskita';
-UPDATE rides SET image = 'evolution.jpg' WHERE name = 'Evolution';
-UPDATE rides SET image = 'vamvolari.jpg' WHERE name = 'Vamvolari';
-UPDATE rides SET image = 'spleshi.jpg' WHERE name = 'Spleshi';
 
--- OBSERVAÇÕES:
--- 1. Certifique-se de que os nomes das atrações correspondem exatamente aos registros na tabela
--- 2. Ajuste os nomes dos arquivos de imagem conforme necessário
--- 3. Verifique se os arquivos de imagem existem no diretório correto
+select name from rides;
+update rides set image = "rio.png" where name = "Rio Bravo";
+
+
+select name from rides;
+update rides set image = "giranda.png" where name = "Giranda Mundi";
+
+
+select name from rides;
+update rides set image = "ekaka.png" where name = "Ekatomb";
+
+
+select name from rides;
+update rides set image = "jogakí_di_Kaminda.png" where name = "Jogakí di Kaminda";
+
+
+select name from rides;
+update rides set image = "teatro.png" where name = "Theatro di Kaminda";
+
+select name from rides;
+update rides set image = "cien.png" where name = " Cine 180 ";
+
+
+select name from rides;
+update rides set image = "ghosti.png" where name = "Ghosti Hotel";
+
+
+select name from rides;
+update rides set image = "vulk.png" where name = "Vulaviking";
+
+select name from rides;
+update rides set image = "bravo.png" where name = "Bravo Bull";
+
+
+select name from rides;
+update rides set image = "saalon.png" where name = "Saloon Show";
+
+select name from rides;
+update rides set image = "poko.png" where name = "Giranda Pokotó";
+
+select name from rides;
+update rides set image = "astro.png" where name = "Astronavi";
+
+select name from rides;
+update rides set image = "dis.png" where name = "Dispenkito";
+

@@ -1,22 +1,22 @@
 {
-  "name": "api-hopihari",
+  "name": "api_hopihari",
   "version": "1.0.0",
   "description": "",
   "main": "server.js",
   "scripts": {
-    "start": "node --watch server.js",
+    "start": "npx nodemon server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/BistonN/api-hopihari.git"
+    "url": "git+//github.com/MiguelOFCzzzz/apihopihari.git"
   },
-  "author": "BistonN",
+  "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/BistonN/api-hopihari/issues"
+    "url": "https://github.com/MiguelOFCzzzz/apihopihari/issues"
   },
-  "homepage": "https://github.com/BistonN/api-hopihari#readme",
+  "homepage": "https://github.com/MiguelOFCzzzz/apihopihari#readme",
   "dependencies": {
     "bcrypt": "^5.1.1",
     "body-parser": "^2.2.0",
