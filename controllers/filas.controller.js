@@ -1,35 +1,28 @@
-const mysql = require('../mysql');
+const mysql = require("../mysql");
 
-
-//verficar se o idRide existe
 exports.verificarBrinquedo = async (req, res, next) => {
     try {
-        const resultado = await mysql.execute(
-            `SELECT * FROM atracoes WHERE id = ?`, // Corrigido para 'atracoes'
-            [req.params.idRide]
-        );
+        const resultado = await mysql.execute(`
+            SELECT * FROM rides WHERE id = ?;
+            `, [req.params.idRide]);
 
         if (resultado.length == 0) {
-            return res.status(404).send({ mensagem: "Brinquedo não encontrado" });
+            return res.status(404).send({"Mensagem": "Brinquedo não Encontrado"});
         }
-        next(); // Certifique-se de chamar next() em caso de sucesso
+        next();
     } catch (error) {
-        return res.status(500).send({ mensagem: error.message });
+        return res.status(500).send(error);
     }
-};
+}
+
 
 exports.entrarFila = async (req, res) => {
-    try{
-        const resultado = await mysql.execute(
-            `INSERT INTO \`
-            lines\` (users_id, atracoes_id) VALUES (?, ?)`,
-            [res.locals.idUsuario, req.params.idRide]
-        );
-        return res.status(201).send({
-            "mensagem": "Usuário entrou na fila com sucesso",
-            "resultado": resultado
-        });
-    }catch (error) {
-        return res.status(500).send({ mensagem: error.message });
+    try {
+        const resultados = await mysql.execute(`
+                INSERT INTO hopi_hari_db.lines (id_user, id_ride) VALUES(?, ?)
+            `, [res.locals.idUsuario, Number(req.params.idRide)]);
+        return res.status(201).send({"Mensagens": resultados});
+    } catch (error) {
+        return res.status(500).send(error)
     }
 }

@@ -1,12 +1,12 @@
-const express = require('express');
-const login = require('../middleware/usuario.middleware');
+const express = require("express");
 const router = express.Router();
-const filaController = require('../controllers/filas.controller');
+const login = require("../middleware/usuarios.middleware");
+const filaController = require("../controllers/filas.controller");
 
-// Adicionar um controller adequado ao invés de apenas console.log
-const filasController = require('../controllers/filas.controller');
-
-router.post('/:idRide', login.required, filasController.verificarBrinquedo, filasController.entrarFila);
-
+router.post("/:idRide", 
+    login.required, 
+    filaController.verificarBrinquedo, 
+    filaController.entrarFila 
+);
 
 module.exports = router;
